@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Testing out Javascript inside a notebook | Redditech’s Learn Deep Learning Blog</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Testing out Javascript inside a notebook" />
+<meta name="author" content="Nissan Dookeran" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Notes while experimenting with running Javascript inside a Jupyter notebook. I took several approaches with varying degrees of success. This blog post is the publishing of the notebook with these experiments." />
+<meta property="og:description" content="Notes while experimenting with running Javascript inside a Jupyter notebook. I took several approaches with varying degrees of success. This blog post is the publishing of the notebook with these experiments." />
+<link rel="canonical" href="https://nissan.github.io/learn-deeplearning-blog/jupyter/javascript/experiments/2020/04/01/Testing-out-Javascript-inside-a-notebook.html" />
+<meta property="og:url" content="https://nissan.github.io/learn-deeplearning-blog/jupyter/javascript/experiments/2020/04/01/Testing-out-Javascript-inside-a-notebook.html" />
+<meta property="og:site_name" content="Redditech’s Learn Deep Learning Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-04-01T00:00:00-05:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Nissan Dookeran"},"description":"Notes while experimenting with running Javascript inside a Jupyter notebook. I took several approaches with varying degrees of success. This blog post is the publishing of the notebook with these experiments.","@type":"BlogPosting","headline":"Testing out Javascript inside a notebook","dateModified":"2020-04-01T00:00:00-05:00","datePublished":"2020-04-01T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nissan.github.io/learn-deeplearning-blog/jupyter/javascript/experiments/2020/04/01/Testing-out-Javascript-inside-a-notebook.html"},"url":"https://nissan.github.io/learn-deeplearning-blog/jupyter/javascript/experiments/2020/04/01/Testing-out-Javascript-inside-a-notebook.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/learn-deeplearning-blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://nissan.github.io/learn-deeplearning-blog/feed.xml" title="Redditech's Learn Deep Learning Blog" /><link rel="shortcut icon" type="image/x-icon" href="/learn-deeplearning-blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Testing out Javascript inside a notebook | Redditech’s Learn Deep Learning Blog</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Testing out Javascript inside a notebook" />
+<meta name="author" content="Nissan Dookeran" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Notes while experimenting with running Javascript inside a Jupyter notebook. I took several approaches with varying degrees of success. This blog post is the publishing of the notebook with these experiments." />
+<meta property="og:description" content="Notes while experimenting with running Javascript inside a Jupyter notebook. I took several approaches with varying degrees of success. This blog post is the publishing of the notebook with these experiments." />
+<link rel="canonical" href="https://nissan.github.io/learn-deeplearning-blog/jupyter/javascript/experiments/2020/04/01/Testing-out-Javascript-inside-a-notebook.html" />
+<meta property="og:url" content="https://nissan.github.io/learn-deeplearning-blog/jupyter/javascript/experiments/2020/04/01/Testing-out-Javascript-inside-a-notebook.html" />
+<meta property="og:site_name" content="Redditech’s Learn Deep Learning Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-04-01T00:00:00-05:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Nissan Dookeran"},"description":"Notes while experimenting with running Javascript inside a Jupyter notebook. I took several approaches with varying degrees of success. This blog post is the publishing of the notebook with these experiments.","@type":"BlogPosting","headline":"Testing out Javascript inside a notebook","dateModified":"2020-04-01T00:00:00-05:00","datePublished":"2020-04-01T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nissan.github.io/learn-deeplearning-blog/jupyter/javascript/experiments/2020/04/01/Testing-out-Javascript-inside-a-notebook.html"},"url":"https://nissan.github.io/learn-deeplearning-blog/jupyter/javascript/experiments/2020/04/01/Testing-out-Javascript-inside-a-notebook.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://nissan.github.io/learn-deeplearning-blog/feed.xml" title="Redditech's Learn Deep Learning Blog" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/learn-deeplearning-blog/">Redditech&#39;s Learn Deep Learning Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/learn-deeplearning-blog/about/">About Me</a><a class="page-link" href="/learn-deeplearning-blog/search/">Search</a><a class="page-link" href="/learn-deeplearning-blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Testing out Javascript inside a notebook</h1><p class="page-description">Notes while experimenting with running Javascript inside a Jupyter notebook. I took several approaches with varying degrees of success. This blog post is the publishing of the notebook with these experiments.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-04-01T00:00:00-05:00" itemprop="datePublished">
+        Apr 1, 2020
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">Nissan Dookeran</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      6 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/learn-deeplearning-blog/categories/#jupyter">jupyter</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/learn-deeplearning-blog/categories/#javascript">javascript</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/learn-deeplearning-blog/categories/#experiments">experiments</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/nissan/learn-deeplearning-blog/tree/master/_notebooks/2020-04-01-Testing-out-Javascript-inside-a-notebook.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/learn-deeplearning-blog/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/nissan/learn-deeplearning-blog/master?filepath=_notebooks%2F2020-04-01-Testing-out-Javascript-inside-a-notebook.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/learn-deeplearning-blog/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/nissan/learn-deeplearning-blog/blob/master/_notebooks/2020-04-01-Testing-out-Javascript-inside-a-notebook.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/learn-deeplearning-blog/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#First-attempt---Using-Pixiedust-and-Pixiedust_node">First attempt - Using Pixiedust and Pixiedust_node </a></li>
+<li class="toc-entry toc-h2"><a href="#Alternative-approach:-ReactJS-code-sample-found-in-a-Github-gist">Alternative approach: ReactJS code sample found in a Github gist </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-04-01-Testing-out-Javascript-inside-a-notebook.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="First-attempt---Using-Pixiedust-and-Pixiedust_node">
+<a class="anchor" href="#First-attempt---Using-Pixiedust-and-Pixiedust_node" aria-hidden="true"><span class="octicon octicon-link"></span></a>First attempt - Using Pixiedust and Pixiedust_node<a class="anchor-link" href="#First-attempt---Using-Pixiedust-and-Pixiedust_node"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>First we're going to borrow from <a href="https://github.com/IBM/nodejs-in-notebooks/blob/master/notebooks/nodebook_1.ipynb">a notebook IBM published</a> on getting this up and running</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># install or upgrade the packages</span>
+<span class="c1"># restart the kernel to pick up the latest version</span>
+<span class="o">!</span>pip install pixiedust --upgrade
+<span class="o">!</span>pip install pixiedust_node --upgrade
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Requirement already up-to-date: pixiedust in c:\tools\anaconda3\envs\fastai2\lib\site-packages (1.1.18)
+Requirement already satisfied, skipping upgrade: colour in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust) (0.1.5)
+Requirement already satisfied, skipping upgrade: geojson in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust) (2.5.0)
+Requirement already satisfied, skipping upgrade: requests in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust) (2.23.0)
+Requirement already satisfied, skipping upgrade: lxml in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust) (4.5.0)
+Requirement already satisfied, skipping upgrade: markdown in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust) (3.2.1)
+Requirement already satisfied, skipping upgrade: astunparse in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust) (1.6.3)
+Requirement already satisfied, skipping upgrade: mpld3 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust) (0.3)
+Requirement already satisfied, skipping upgrade: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from requests-&gt;pixiedust) (1.25.8)
+Requirement already satisfied, skipping upgrade: idna&lt;3,&gt;=2.5 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from requests-&gt;pixiedust) (2.9)
+Requirement already satisfied, skipping upgrade: certifi&gt;=2017.4.17 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from requests-&gt;pixiedust) (2019.11.28)
+Requirement already satisfied, skipping upgrade: chardet&lt;4,&gt;=3.0.2 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from requests-&gt;pixiedust) (3.0.4)
+Requirement already satisfied, skipping upgrade: setuptools&gt;=36 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from markdown-&gt;pixiedust) (46.1.1.post20200323)
+Requirement already satisfied, skipping upgrade: six&lt;2.0,&gt;=1.6.1 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from astunparse-&gt;pixiedust) (1.14.0)
+Requirement already satisfied, skipping upgrade: wheel&lt;1.0,&gt;=0.23.0 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from astunparse-&gt;pixiedust) (0.34.2)
+Requirement already up-to-date: pixiedust_node in c:\tools\anaconda3\envs\fastai2\lib\site-packages (0.2.5)
+Requirement already satisfied, skipping upgrade: ipython in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust_node) (7.13.0)
+Requirement already satisfied, skipping upgrade: pandas in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust_node) (1.0.3)
+Requirement already satisfied, skipping upgrade: pixiedust in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust_node) (1.1.18)
+Requirement already satisfied, skipping upgrade: decorator in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (4.4.2)
+Requirement already satisfied, skipping upgrade: pygments in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (2.6.1)
+Requirement already satisfied, skipping upgrade: setuptools&gt;=18.5 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (46.1.1.post20200323)
+Requirement already satisfied, skipping upgrade: pickleshare in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (0.7.5)
+Requirement already satisfied, skipping upgrade: colorama; sys_platform == "win32" in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (0.4.3)
+Requirement already satisfied, skipping upgrade: traitlets&gt;=4.2 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (4.3.3)
+Requirement already satisfied, skipping upgrade: jedi&gt;=0.10 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (0.16.0)
+Requirement already satisfied, skipping upgrade: prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (3.0.4)
+Requirement already satisfied, skipping upgrade: backcall in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (0.1.0)
+Requirement already satisfied, skipping upgrade: python-dateutil&gt;=2.6.1 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pandas-&gt;pixiedust_node) (2.8.1)
+Requirement already satisfied, skipping upgrade: numpy&gt;=1.13.3 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pandas-&gt;pixiedust_node) (1.18.1)
+Requirement already satisfied, skipping upgrade: pytz&gt;=2017.2 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pandas-&gt;pixiedust_node) (2019.3)
+Requirement already satisfied, skipping upgrade: requests in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust-&gt;pixiedust_node) (2.23.0)
+Requirement already satisfied, skipping upgrade: mpld3 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust-&gt;pixiedust_node) (0.3)
+Requirement already satisfied, skipping upgrade: lxml in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust-&gt;pixiedust_node) (4.5.0)
+Requirement already satisfied, skipping upgrade: markdown in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust-&gt;pixiedust_node) (3.2.1)
+Requirement already satisfied, skipping upgrade: astunparse in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust-&gt;pixiedust_node) (1.6.3)
+Requirement already satisfied, skipping upgrade: colour in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust-&gt;pixiedust_node) (0.1.5)
+Requirement already satisfied, skipping upgrade: geojson in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust-&gt;pixiedust_node) (2.5.0)
+Requirement already satisfied, skipping upgrade: ipython-genutils in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from traitlets&gt;=4.2-&gt;ipython-&gt;pixiedust_node) (0.2.0)
+Requirement already satisfied, skipping upgrade: six in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from traitlets&gt;=4.2-&gt;ipython-&gt;pixiedust_node) (1.14.0)
+Requirement already satisfied, skipping upgrade: parso&gt;=0.5.2 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from jedi&gt;=0.10-&gt;ipython-&gt;pixiedust_node) (0.6.2)
+Requirement already satisfied, skipping upgrade: wcwidth in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0-&gt;ipython-&gt;pixiedust_node) (0.1.8)
+Requirement already satisfied, skipping upgrade: idna&lt;3,&gt;=2.5 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from requests-&gt;pixiedust-&gt;pixiedust_node) (2.9)
+Requirement already satisfied, skipping upgrade: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from requests-&gt;pixiedust-&gt;pixiedust_node) (1.25.8)
+Requirement already satisfied, skipping upgrade: certifi&gt;=2017.4.17 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from requests-&gt;pixiedust-&gt;pixiedust_node) (2019.11.28)
+Requirement already satisfied, skipping upgrade: chardet&lt;4,&gt;=3.0.2 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from requests-&gt;pixiedust-&gt;pixiedust_node) (3.0.4)
+Requirement already satisfied, skipping upgrade: wheel&lt;1.0,&gt;=0.23.0 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from astunparse-&gt;pixiedust-&gt;pixiedust_node) (0.34.2)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now let's try activating it. I already have Node installed on my local machine, but if you need it, <a href="https://nodejs.org/en/download/">install Node from here</a></p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pixiedust_node</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Pixiedust database opened successfully
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+        <div style="margin:10px">
+            <a href="https://github.com/ibm-watson-data-lab/pixiedust" target="_new">
+                <img src="https://github.com/ibm-watson-data-lab/pixiedust/raw/master/docs/_static/pd_icon32.png" style="float:left;margin-right:10px">
+            </a>
+            <span>Pixiedust version 1.1.18</span>
+        </div>
+        
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+            <div style="margin:10px"> 
+            <a href="https://github.com/ibm-cds-labs/pixiedust_node" target="_new"> 
+            <img src="https://github.com/ibm-cds-labs/pixiedust_node/raw/master/docs/_images/pdn_icon32.png" style="float:left;margin-right:10px"> 
+            </a> 
+            <span>Pixiedust Node.js</span> 
+            </div> 
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">node</span>
+print(new Date());
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>pixiedust_node 0.2.5 started. Cells starting '%%node' may contain Node.js code.
+"2020-03-31T10:37:42.112Z"
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Wow that's pretty cool. I will have to read up a little more into the T&amp;C for this, since it seems to be tracking usage, but I'm not too concerned on this yet since this is just experimentation.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So let's push a little and see what this baby can do. I was looking for a WYSIWYG Rich Text Editor to embed in an app, and I came across <a href="https://github.com/quilljs/quill/">Quill</a>. Let's see if we can embed the <a href="https://quilljs.com/docs/quickstart/">Quill getting started sample code</a> here. I keep forgetting to put <code>%%node</code> at the top of the code cell to run Javascript syntax so hopefully this note here fixes that.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">node</span>
+// Remember to use javascript syntax from here forth
+var htmlString= `
+&lt;!-- Include stylesheet --&gt; 
+&lt;link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet"&gt;
+&lt;!-- Create the editor container --&gt;
+&lt;div id="editor"&gt;  
+  &lt;p&gt;Hello World!&lt;/p&gt; 
+  &lt;p&gt;Some initial &lt;strong&gt;bold&lt;/strong&gt; text&lt;/p&gt;
+  &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Include the Quill library --&gt;
+&lt;script src="https://cdn.quilljs.com/1.3.6/quill.js"&gt;&lt;/script&gt;
+
+&lt;!-- Initialize Quill editor --&gt;
+&lt;script&gt;
+  var quill = new Quill('#editor', {
+    theme: 'snow'
+  });
+&lt;/script&gt;
+`
+// console.log(htmlString)
+html(htmlString)
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+<!-- Include stylesheet --> 
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<!-- Create the editor container -->
+<div id="editor">  
+  <p>Hello World!</p> 
+  <p>Some initial <strong>bold</strong> text</p>
+  <p><br></p>
+</div>
+
+<!-- Include the Quill library -->
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+<!-- Initialize Quill editor -->
+<script>
+  var quill = new Quill('#editor', {
+    theme: 'snow'
+  });
+</script>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Damn, maybe a bit too ambitious a start to think it could call external JS. Let me just start with just the simple HTML part of that code</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">node</span>
+var str = `
+&lt;!-- Create the editor container --&gt;
+&lt;div id="editor"&gt;  
+  &lt;p&gt;Hello World!&lt;/p&gt; 
+  &lt;p&gt;Some initial &lt;strong&gt;bold&lt;/strong&gt; text&lt;/p&gt;
+  &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;/div&gt;
+`
+html(str)
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>... ... ... ... ... ... ...
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+<!-- Create the editor container -->
+<div id="editor">  
+  <p>Hello World!</p> 
+  <p>Some initial <strong>bold</strong> text</p>
+  <p><br></p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Nothing spectacular, but it is respecting HTML tags so that's something to note, let's move on. The documentation says I can see what npm packages are available. Let's take a look what I have</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">node</span>
+node.list()
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Uncaught
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ok. So the pixiedust and pixiedust node combination have some merits, but aren't quite as glamorous as I hoped they'd be. Let's do some searching and try another approach. If I come back to doing more here and update the notebook I'll add a note cell here so the blog post reflects that anything from here is new stuff I added since first published</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Alternative-approach:-ReactJS-code-sample-found-in-a-Github-gist">
+<a class="anchor" href="#Alternative-approach:-ReactJS-code-sample-found-in-a-Github-gist" aria-hidden="true"><span class="octicon octicon-link"></span></a>Alternative approach: ReactJS code sample found in a Github gist<a class="anchor-link" href="#Alternative-approach:-ReactJS-code-sample-found-in-a-Github-gist"> </a>
+</h2>
+<p>I found a <a href="https://gist.github.com/jeremyschlatter/c35c6bfa568e5a40440cb2fefcc7fd4e">public gist on Github</a> that showed a notebook proporting to run ReactJS code. Let's give it a try</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">string</span> <span class="kn">import</span> <span class="n">Template</span>
+
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Javascript</span><span class="p">,</span> <span class="n">display</span>
+<span class="kn">from</span> <span class="nn">IPython.core.magic</span> <span class="kn">import</span> <span class="n">register_cell_magic</span>
+
+
+<span class="n">display</span><span class="p">(</span><span class="n">Javascript</span><span class="p">(</span><span class="s1">'''</span>
+<span class="s1">// Load our libraries from a CDN instead of wherever this notebook is hosted.</span>
+<span class="s1">require.config({</span>
+<span class="s1">    paths: {</span>
+<span class="s1">        babel: 'https://unpkg.com/babel-standalone@6/babel.min',</span>
+<span class="s1">        react: 'https://unpkg.com/react@15.3.1/dist/react',</span>
+<span class="s1">        'react-dom': 'https://unpkg.com/react-dom@15.3.1/dist/react-dom'</span>
+<span class="s1">    }</span>
+<span class="s1">})</span>
+
+<span class="s1">// Hook to call into Python.</span>
+<span class="s1">// Credit to disarticulate for documenting the usage of iopub: </span>
+<span class="s1">//    https://gist.github.com/disarticulate/d06069ff3e71cf828e5329beab8cb084</span>
+<span class="s1">window.python = code =&gt; new Promise((resolve, reject) =&gt; {</span>
+<span class="s1">    IPython.notebook.kernel.execute(</span>
+<span class="s1">        code,</span>
+<span class="s1">        {iopub: {output: data =&gt; resolve(data.content.text)}},</span>
+<span class="s1">    )   </span>
+<span class="s1">})</span>
+<span class="s1">'''</span><span class="p">))</span>
+
+
+<span class="nd">@register_cell_magic</span>
+<span class="k">def</span> <span class="nf">jsx</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">cell</span><span class="p">):</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Javascript</span><span class="p">((</span><span class="n">Template</span><span class="p">(</span><span class="s1">'''</span>
+<span class="s1">        require(['babel', 'react', 'react-dom'], (Babel, React, ReactDOM) =&gt; {</span>
+<span class="s1">            eval(Babel.transform($quoted_script, {presets: ['react']}).code)</span>
+<span class="s1">        })</span>
+<span class="s1">    '''</span><span class="p">)</span><span class="o">.</span><span class="n">substitute</span><span class="p">(</span><span class="n">quoted_script</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">cell</span><span class="p">)))))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="3e4ada50-969a-4bde-a3fc-885c73ec00ed"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#3e4ada50-969a-4bde-a3fc-885c73ec00ed');
+
+// Load our libraries from a CDN instead of wherever this notebook is hosted.
+require.config({
+    paths: {
+        babel: 'https://unpkg.com/babel-standalone@6/babel.min',
+        react: 'https://unpkg.com/react@15.3.1/dist/react',
+        'react-dom': 'https://unpkg.com/react-dom@15.3.1/dist/react-dom'
+    }
+})
+
+// Hook to call into Python.
+// Credit to disarticulate for documenting the usage of iopub: 
+//    https://gist.github.com/disarticulate/d06069ff3e71cf828e5329beab8cb084
+window.python = code => new Promise((resolve, reject) => {
+    IPython.notebook.kernel.execute(
+        code,
+        {iopub: {output: data => resolve(data.content.text)}},
+    )   
+})
+
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So the gist basically says I can set a python variable and then have the JSX declared later use this variable in what it displays. Let's give this a go using their sample</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">greeting</span> <span class="o">=</span> <span class="s1">'Hello from Python and React!'</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%js</span>x
+<span class="nx">python</span><span class="p">(</span><span class="s1">'print(greeting)'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">greeting</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">greeting</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/h1&gt;,</span>
+      <span class="nx">element</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="p">)</span>
+<span class="p">})</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+
+<div id="498b6b47-5589-47a4-ab9b-bc8d3e68e264"></div>
+<div class="output_subarea output_javascript ">
+<script type="text/javascript">
+var element = $('#498b6b47-5589-47a4-ab9b-bc8d3e68e264');
+
+        require(['babel', 'react', 'react-dom'], (Babel, React, ReactDOM) => {
+            eval(Babel.transform("python('print(greeting)').then(greeting => {\n    ReactDOM.render(\n      <h1>{greeting}</h1>,\n      element[0],\n    )\n})\n", {presets: ['react']}).code)
+        })
+    
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ok that's pretty sweet. I wonder if it will work with a more complex bit of code though. I'll have to dig further and update this post in future with what I find here. There seem to be a few more approaches, and even a few <a href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels">Javascript kernels for Jupyter</a> online to experiment with.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="nissan/learn-deeplearning-blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/learn-deeplearning-blog/jupyter/javascript/experiments/2020/04/01/Testing-out-Javascript-inside-a-notebook.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/learn-deeplearning-blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/learn-deeplearning-blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/learn-deeplearning-blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>My blog as I learn more about deep learning.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/nissan" title="nissan"><svg class="svg-icon grey"><use xlink:href="/learn-deeplearning-blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/redditech" title="redditech"><svg class="svg-icon grey"><use xlink:href="/learn-deeplearning-blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
