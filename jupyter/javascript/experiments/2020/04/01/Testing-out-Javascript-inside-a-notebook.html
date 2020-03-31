@@ -95,7 +95,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      6 min read
+      8 min read
     
 </span></p>
 
@@ -170,7 +170,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>First we're going to borrow from <a href="https://github.com/IBM/nodejs-in-notebooks/blob/master/notebooks/nodebook_1.ipynb">a notebook IBM published</a> on getting this up and running</p>
+<p>First we're going to borrow from <a href="https://github.com/IBM/nodejs-in-notebooks/blob/master/notebooks/nodebook_1.ipynb">a notebook IBM published</a> on getting this approach up and running</p>
 
 </div>
 </div>
@@ -200,51 +200,51 @@ window.onload = wrap_img;
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Requirement already up-to-date: pixiedust in c:\tools\anaconda3\envs\fastai2\lib\site-packages (1.1.18)
 Requirement already satisfied, skipping upgrade: colour in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust) (0.1.5)
-Requirement already satisfied, skipping upgrade: geojson in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust) (2.5.0)
 Requirement already satisfied, skipping upgrade: requests in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust) (2.23.0)
-Requirement already satisfied, skipping upgrade: lxml in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust) (4.5.0)
+Requirement already satisfied, skipping upgrade: geojson in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust) (2.5.0)
 Requirement already satisfied, skipping upgrade: markdown in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust) (3.2.1)
-Requirement already satisfied, skipping upgrade: astunparse in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust) (1.6.3)
 Requirement already satisfied, skipping upgrade: mpld3 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust) (0.3)
-Requirement already satisfied, skipping upgrade: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from requests-&gt;pixiedust) (1.25.8)
+Requirement already satisfied, skipping upgrade: lxml in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust) (4.5.0)
+Requirement already satisfied, skipping upgrade: astunparse in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust) (1.6.3)
 Requirement already satisfied, skipping upgrade: idna&lt;3,&gt;=2.5 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from requests-&gt;pixiedust) (2.9)
-Requirement already satisfied, skipping upgrade: certifi&gt;=2017.4.17 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from requests-&gt;pixiedust) (2019.11.28)
 Requirement already satisfied, skipping upgrade: chardet&lt;4,&gt;=3.0.2 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from requests-&gt;pixiedust) (3.0.4)
+Requirement already satisfied, skipping upgrade: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from requests-&gt;pixiedust) (1.25.8)
+Requirement already satisfied, skipping upgrade: certifi&gt;=2017.4.17 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from requests-&gt;pixiedust) (2019.11.28)
 Requirement already satisfied, skipping upgrade: setuptools&gt;=36 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from markdown-&gt;pixiedust) (46.1.1.post20200323)
 Requirement already satisfied, skipping upgrade: six&lt;2.0,&gt;=1.6.1 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from astunparse-&gt;pixiedust) (1.14.0)
 Requirement already satisfied, skipping upgrade: wheel&lt;1.0,&gt;=0.23.0 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from astunparse-&gt;pixiedust) (0.34.2)
 Requirement already up-to-date: pixiedust_node in c:\tools\anaconda3\envs\fastai2\lib\site-packages (0.2.5)
-Requirement already satisfied, skipping upgrade: ipython in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust_node) (7.13.0)
-Requirement already satisfied, skipping upgrade: pandas in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust_node) (1.0.3)
 Requirement already satisfied, skipping upgrade: pixiedust in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust_node) (1.1.18)
-Requirement already satisfied, skipping upgrade: decorator in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (4.4.2)
-Requirement already satisfied, skipping upgrade: pygments in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (2.6.1)
-Requirement already satisfied, skipping upgrade: setuptools&gt;=18.5 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (46.1.1.post20200323)
-Requirement already satisfied, skipping upgrade: pickleshare in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (0.7.5)
-Requirement already satisfied, skipping upgrade: colorama; sys_platform == "win32" in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (0.4.3)
-Requirement already satisfied, skipping upgrade: traitlets&gt;=4.2 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (4.3.3)
-Requirement already satisfied, skipping upgrade: jedi&gt;=0.10 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (0.16.0)
-Requirement already satisfied, skipping upgrade: prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (3.0.4)
-Requirement already satisfied, skipping upgrade: backcall in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (0.1.0)
-Requirement already satisfied, skipping upgrade: python-dateutil&gt;=2.6.1 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pandas-&gt;pixiedust_node) (2.8.1)
-Requirement already satisfied, skipping upgrade: numpy&gt;=1.13.3 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pandas-&gt;pixiedust_node) (1.18.1)
-Requirement already satisfied, skipping upgrade: pytz&gt;=2017.2 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pandas-&gt;pixiedust_node) (2019.3)
-Requirement already satisfied, skipping upgrade: requests in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust-&gt;pixiedust_node) (2.23.0)
-Requirement already satisfied, skipping upgrade: mpld3 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust-&gt;pixiedust_node) (0.3)
+Requirement already satisfied, skipping upgrade: pandas in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust_node) (1.0.3)
+Requirement already satisfied, skipping upgrade: ipython in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust_node) (7.13.0)
 Requirement already satisfied, skipping upgrade: lxml in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust-&gt;pixiedust_node) (4.5.0)
-Requirement already satisfied, skipping upgrade: markdown in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust-&gt;pixiedust_node) (3.2.1)
-Requirement already satisfied, skipping upgrade: astunparse in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust-&gt;pixiedust_node) (1.6.3)
 Requirement already satisfied, skipping upgrade: colour in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust-&gt;pixiedust_node) (0.1.5)
 Requirement already satisfied, skipping upgrade: geojson in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust-&gt;pixiedust_node) (2.5.0)
-Requirement already satisfied, skipping upgrade: ipython-genutils in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from traitlets&gt;=4.2-&gt;ipython-&gt;pixiedust_node) (0.2.0)
-Requirement already satisfied, skipping upgrade: six in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from traitlets&gt;=4.2-&gt;ipython-&gt;pixiedust_node) (1.14.0)
-Requirement already satisfied, skipping upgrade: parso&gt;=0.5.2 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from jedi&gt;=0.10-&gt;ipython-&gt;pixiedust_node) (0.6.2)
-Requirement already satisfied, skipping upgrade: wcwidth in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0-&gt;ipython-&gt;pixiedust_node) (0.1.8)
+Requirement already satisfied, skipping upgrade: astunparse in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust-&gt;pixiedust_node) (1.6.3)
+Requirement already satisfied, skipping upgrade: markdown in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust-&gt;pixiedust_node) (3.2.1)
+Requirement already satisfied, skipping upgrade: mpld3 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust-&gt;pixiedust_node) (0.3)
+Requirement already satisfied, skipping upgrade: requests in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pixiedust-&gt;pixiedust_node) (2.23.0)
+Requirement already satisfied, skipping upgrade: pytz&gt;=2017.2 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pandas-&gt;pixiedust_node) (2019.3)
+Requirement already satisfied, skipping upgrade: numpy&gt;=1.13.3 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pandas-&gt;pixiedust_node) (1.18.1)
+Requirement already satisfied, skipping upgrade: python-dateutil&gt;=2.6.1 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from pandas-&gt;pixiedust_node) (2.8.1)
+Requirement already satisfied, skipping upgrade: pickleshare in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (0.7.5)
+Requirement already satisfied, skipping upgrade: decorator in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (4.4.2)
+Requirement already satisfied, skipping upgrade: prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (3.0.4)
+Requirement already satisfied, skipping upgrade: pygments in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (2.6.1)
+Requirement already satisfied, skipping upgrade: backcall in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (0.1.0)
+Requirement already satisfied, skipping upgrade: colorama; sys_platform == "win32" in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (0.4.3)
+Requirement already satisfied, skipping upgrade: setuptools&gt;=18.5 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (46.1.1.post20200323)
+Requirement already satisfied, skipping upgrade: jedi&gt;=0.10 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (0.16.0)
+Requirement already satisfied, skipping upgrade: traitlets&gt;=4.2 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from ipython-&gt;pixiedust_node) (4.3.3)
+Requirement already satisfied, skipping upgrade: wheel&lt;1.0,&gt;=0.23.0 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from astunparse-&gt;pixiedust-&gt;pixiedust_node) (0.34.2)
+Requirement already satisfied, skipping upgrade: six&lt;2.0,&gt;=1.6.1 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from astunparse-&gt;pixiedust-&gt;pixiedust_node) (1.14.0)
 Requirement already satisfied, skipping upgrade: idna&lt;3,&gt;=2.5 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from requests-&gt;pixiedust-&gt;pixiedust_node) (2.9)
+Requirement already satisfied, skipping upgrade: chardet&lt;4,&gt;=3.0.2 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from requests-&gt;pixiedust-&gt;pixiedust_node) (3.0.4)
 Requirement already satisfied, skipping upgrade: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from requests-&gt;pixiedust-&gt;pixiedust_node) (1.25.8)
 Requirement already satisfied, skipping upgrade: certifi&gt;=2017.4.17 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from requests-&gt;pixiedust-&gt;pixiedust_node) (2019.11.28)
-Requirement already satisfied, skipping upgrade: chardet&lt;4,&gt;=3.0.2 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from requests-&gt;pixiedust-&gt;pixiedust_node) (3.0.4)
-Requirement already satisfied, skipping upgrade: wheel&lt;1.0,&gt;=0.23.0 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from astunparse-&gt;pixiedust-&gt;pixiedust_node) (0.34.2)
+Requirement already satisfied, skipping upgrade: wcwidth in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0-&gt;ipython-&gt;pixiedust_node) (0.1.8)
+Requirement already satisfied, skipping upgrade: parso&gt;=0.5.2 in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from jedi&gt;=0.10-&gt;ipython-&gt;pixiedust_node) (0.6.2)
+Requirement already satisfied, skipping upgrade: ipython-genutils in c:\tools\anaconda3\envs\fastai2\lib\site-packages (from traitlets&gt;=4.2-&gt;ipython-&gt;pixiedust_node) (0.2.0)
 </pre>
 </div>
 </div>
@@ -258,7 +258,7 @@ Requirement already satisfied, skipping upgrade: wheel&lt;1.0,&gt;=0.23.0 in c:\
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now let's try activating it. I already have Node installed on my local machine, but if you need it, <a href="https://nodejs.org/en/download/">install Node from here</a></p>
+<p>Now let's try activating what we just installed and running some javascript code thru Node. I already have Node installed on my local machine, but if you need it, <a href="https://nodejs.org/en/download/">install Node from here</a></p>
 
 </div>
 </div>
@@ -348,7 +348,7 @@ print(new Date());
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>pixiedust_node 0.2.5 started. Cells starting '%%node' may contain Node.js code.
-"2020-03-31T10:37:42.112Z"
+"2020-03-31T11:29:22.434Z"
 </pre>
 </div>
 </div>
@@ -362,7 +362,7 @@ print(new Date());
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Wow that's pretty cool. I will have to read up a little more into the T&amp;C for this, since it seems to be tracking usage, but I'm not too concerned on this yet since this is just experimentation.</p>
+<p>Wow that's pretty cool. I will have to read up a little more into the T&amp;C for this, since it seems to be tracking usage in my initial run of the import cell, but the message disappeared when I re-ran it, but I'm not too concerned on this yet since this is just experimentation.</p>
 
 </div>
 </div>
@@ -370,7 +370,7 @@ print(new Date());
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>So let's push a little and see what this baby can do. I was looking for a WYSIWYG Rich Text Editor to embed in an app, and I came across <a href="https://github.com/quilljs/quill/">Quill</a>. Let's see if we can embed the <a href="https://quilljs.com/docs/quickstart/">Quill getting started sample code</a> here. I keep forgetting to put <code>%%node</code> at the top of the code cell to run Javascript syntax so hopefully this note here fixes that.</p>
+<p>So let's push a little and see what the limits of this integration can do. I was looking for a WYSIWYG Rich Text Editor to embed in an app, and I came across <a href="https://github.com/quilljs/quill/">Quill</a>. I don't want to invest too much time in getting an app running to see what it does, so let's see if we can embed the <a href="https://quilljs.com/docs/quickstart/">Quill getting started sample code</a> here for a quick experiment with it. I keep forgetting to put <code>%%node</code> at the top of the code cell to run Javascript syntax so hopefully this note here fixes that.</p>
 
 </div>
 </div>
@@ -385,21 +385,27 @@ print(new Date());
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">node</span>
 // Remember to use javascript syntax from here forth
 var htmlString= `
-&lt;!-- Include stylesheet --&gt; 
-&lt;link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet"&gt;
+&lt;!-- Include Quill stylesheet --&gt;
+&lt;link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet"&gt;
+
+&lt;!-- Create the toolbar container --&gt;
+&lt;div id="toolbar"&gt;
+  &lt;button class="ql-bold"&gt;Bold&lt;/button&gt;
+  &lt;button class="ql-italic"&gt;Italic&lt;/button&gt;
+&lt;/div&gt;
+
 &lt;!-- Create the editor container --&gt;
-&lt;div id="editor"&gt;  
-  &lt;p&gt;Hello World!&lt;/p&gt; 
-  &lt;p&gt;Some initial &lt;strong&gt;bold&lt;/strong&gt; text&lt;/p&gt;
-  &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;div id="editor"&gt;
+  &lt;p&gt;Hello World!&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;!-- Include the Quill library --&gt;
-&lt;script src="https://cdn.quilljs.com/1.3.6/quill.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.quilljs.com/1.0.0/quill.js"&gt;&lt;/script&gt;
 
 &lt;!-- Initialize Quill editor --&gt;
-&lt;script&gt;
-  var quill = new Quill('#editor', {
+&lt;script type="text/javascript"&gt;
+  var editor = new Quill('#editor', {
+    modules: { toolbar: '#toolbar' },
     theme: 'snow'
   });
 &lt;/script&gt;
@@ -418,7 +424,7 @@ html(htmlString)
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+<pre>... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
 </pre>
 </div>
 </div>
@@ -428,21 +434,27 @@ html(htmlString)
 
 <div class="output_html rendered_html output_subarea ">
 
-<!-- Include stylesheet --> 
-<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<!-- Include Quill stylesheet -->
+<link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
+
+<!-- Create the toolbar container -->
+<div id="toolbar">
+  <button class="ql-bold">Bold</button>
+  <button class="ql-italic">Italic</button>
+</div>
+
 <!-- Create the editor container -->
-<div id="editor">  
-  <p>Hello World!</p> 
-  <p>Some initial <strong>bold</strong> text</p>
-  <p><br></p>
+<div id="editor">
+  <p>Hello World!</p>
 </div>
 
 <!-- Include the Quill library -->
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
 
 <!-- Initialize Quill editor -->
-<script>
-  var quill = new Quill('#editor', {
+<script type="text/javascript">
+  var editor = new Quill('#editor', {
+    modules: { toolbar: '#toolbar' },
     theme: 'snow'
   });
 </script>
@@ -460,7 +472,7 @@ html(htmlString)
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Damn, maybe a bit too ambitious a start to think it could call external JS. Let me just start with just the simple HTML part of that code</p>
+<p>Damn, maybe a bit too ambitious a start to think it could do this. Maybe it's the call to the external JS and Stylesheets. I'll have to investigate the why of this later. Let me just start with just the simple HTML part of that code and see if this (as uninteresting as it is) will run without error.</p>
 
 </div>
 </div>
@@ -524,7 +536,7 @@ html(str)
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Nothing spectacular, but it is respecting HTML tags so that's something to note, let's move on. The documentation says I can see what npm packages are available. Let's take a look what I have</p>
+<p>Nothing spectacular, but it is respecting HTML tags so that's something to note, let's move on. The documentation for <code>pixiedust_node</code> says I can see what npm packages are available and I can also install <code>npm</code> packages. Let's take a look what I have, and then try to install another WYSIWYG editor I noted called <a href="https://github.com/froala/wysiwyg-editor-node-sdk">Froala</a> and see if we fare better here.</p>
 
 </div>
 </div>
@@ -537,7 +549,7 @@ html(str)
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">node</span>
-node.list()
+npm.list()
 </pre></div>
 
     </div>
@@ -561,10 +573,43 @@ node.list()
 </div>
     
 
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">node</span>
+npm install froala-editor
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>npm should be run outside of the node repl, in your normal shell.
+(Press Control-D to exit.)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Ok. So the pixiedust and pixiedust node combination have some merits, but aren't quite as glamorous as I hoped they'd be. Let's do some searching and try another approach. If I come back to doing more here and update the notebook I'll add a note cell here so the blog post reflects that anything from here is new stuff I added since first published</p>
+<p>Ok. So not getting the messages or ease of use I was expecting. Maybe it's my inexperience with the environment, but I was hoping for better. The pixiedust and pixiedust node combination have some merits, but aren't quite as glamorous as I hoped they'd be. Let's do some searching and try another approach. If I come back to doing more here and update the notebook I'll add a note cell here so the blog post reflects that anything from here is new stuff I added since first published</p>
 
 </div>
 </div>
@@ -575,7 +620,7 @@ node.list()
 <h2 id="Alternative-approach:-ReactJS-code-sample-found-in-a-Github-gist">
 <a class="anchor" href="#Alternative-approach:-ReactJS-code-sample-found-in-a-Github-gist" aria-hidden="true"><span class="octicon octicon-link"></span></a>Alternative approach: ReactJS code sample found in a Github gist<a class="anchor-link" href="#Alternative-approach:-ReactJS-code-sample-found-in-a-Github-gist"> </a>
 </h2>
-<p>I found a <a href="https://gist.github.com/jeremyschlatter/c35c6bfa568e5a40440cb2fefcc7fd4e">public gist on Github</a> that showed a notebook proporting to run ReactJS code. Let's give it a try</p>
+<p>I found a <a href="https://gist.github.com/jeremyschlatter/c35c6bfa568e5a40440cb2fefcc7fd4e">public gist on Github</a> that showed a notebook proporting to run ReactJS code. Let's give it a try, the code may be copied verbatim since I'm not sure yet what it's doing so don't want to break it apart yet, although I might do this in a future review of this.</p>
 
 </div>
 </div>
@@ -637,10 +682,10 @@ node.list()
 
 
 
-<div id="3e4ada50-969a-4bde-a3fc-885c73ec00ed"></div>
+<div id="b0bf5687-e16c-45fb-b3e8-efb86ef3b591"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#3e4ada50-969a-4bde-a3fc-885c73ec00ed');
+var element = $('#b0bf5687-e16c-45fb-b3e8-efb86ef3b591');
 
 // Load our libraries from a CDN instead of wherever this notebook is hosted.
 require.config({
@@ -675,7 +720,7 @@ window.python = code => new Promise((resolve, reject) => {
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>So the gist basically says I can set a python variable and then have the JSX declared later use this variable in what it displays. Let's give this a go using their sample</p>
+<p>So the first time I ran the above cell I got no errors, but the 2nd time it generated a heap of them. I'm not sure if this is an after-effect of the failed previous experiment, but let's press on and hope the right bits got compiled as needed. The gist basically says I can set a python variable and then have the JSX declared later use this variable in what it displays. Let's give this a go using their sample</p>
 
 </div>
 </div>
@@ -725,10 +770,10 @@ window.python = code => new Promise((resolve, reject) => {
 
 
 
-<div id="498b6b47-5589-47a4-ab9b-bc8d3e68e264"></div>
+<div id="852f27c1-7c0b-4b41-9973-b3e07bdce4f0"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#498b6b47-5589-47a4-ab9b-bc8d3e68e264');
+var element = $('#852f27c1-7c0b-4b41-9973-b3e07bdce4f0');
 
         require(['babel', 'react', 'react-dom'], (Babel, React, ReactDOM) => {
             eval(Babel.transform("python('print(greeting)').then(greeting => {\n    ReactDOM.render(\n      <h1>{greeting}</h1>,\n      element[0],\n    )\n})\n", {presets: ['react']}).code)
@@ -748,7 +793,17 @@ var element = $('#498b6b47-5589-47a4-ab9b-bc8d3e68e264');
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Ok that's pretty sweet. I wonder if it will work with a more complex bit of code though. I'll have to dig further and update this post in future with what I find here. There seem to be a few more approaches, and even a few <a href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels">Javascript kernels for Jupyter</a> online to experiment with.</p>
+<p>Ok it was pretty sweet that the first time I ran the code it rendered, but subsequent running spit out the gob of errors you see above. I wonder if it will work with a more complex bit of code though. I'll have to dig further and update this post in future with what I find here. There seem to be a few more approaches I can try, and even a few <a href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels">Javascript kernels for Jupyter</a> online to experiment with.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>Experiment status:<strong>In progress</strong></p>
+</blockquote>
 
 </div>
 </div>
