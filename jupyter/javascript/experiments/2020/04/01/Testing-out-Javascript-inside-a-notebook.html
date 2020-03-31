@@ -581,7 +581,7 @@ npm.list()
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">node</span>
-npm install froala-editor
+npm.install('froala-editor')
 </pre></div>
 
     </div>
@@ -594,8 +594,7 @@ npm install froala-editor
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>npm should be run outside of the node repl, in your normal shell.
-(Press Control-D to exit.)
+<pre>Uncaught
 </pre>
 </div>
 </div>
@@ -682,10 +681,10 @@ npm install froala-editor
 
 
 
-<div id="b0bf5687-e16c-45fb-b3e8-efb86ef3b591"></div>
+<div id="e763e464-7f5e-4c77-b9ca-3fe86c167fc4"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#b0bf5687-e16c-45fb-b3e8-efb86ef3b591');
+var element = $('#e763e464-7f5e-4c77-b9ca-3fe86c167fc4');
 
 // Load our libraries from a CDN instead of wherever this notebook is hosted.
 require.config({
@@ -770,10 +769,10 @@ window.python = code => new Promise((resolve, reject) => {
 
 
 
-<div id="852f27c1-7c0b-4b41-9973-b3e07bdce4f0"></div>
+<div id="db2ef40d-f851-42b9-a87e-2204248ad5f5"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#852f27c1-7c0b-4b41-9973-b3e07bdce4f0');
+var element = $('#db2ef40d-f851-42b9-a87e-2204248ad5f5');
 
         require(['babel', 'react', 'react-dom'], (Babel, React, ReactDOM) => {
             eval(Babel.transform("python('print(greeting)').then(greeting => {\n    ReactDOM.render(\n      <h1>{greeting}</h1>,\n      element[0],\n    )\n})\n", {presets: ['react']}).code)
