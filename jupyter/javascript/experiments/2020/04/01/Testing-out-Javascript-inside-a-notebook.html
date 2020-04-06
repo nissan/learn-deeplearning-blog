@@ -18,7 +18,13 @@
 <script type="application/ld+json">
 {"author":{"@type":"Person","name":"Nissan Dookeran"},"description":"Notes while experimenting with running Javascript inside a Jupyter notebook. I took several approaches with varying degrees of success. This blog post is the publishing of the notebook with these experiments.","@type":"BlogPosting","headline":"Testing out Javascript inside a notebook","dateModified":"2020-04-01T00:00:00-05:00","datePublished":"2020-04-01T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nissan.github.io/learn-deeplearning-blog/jupyter/javascript/experiments/2020/04/01/Testing-out-Javascript-inside-a-notebook.html"},"url":"https://nissan.github.io/learn-deeplearning-blog/jupyter/javascript/experiments/2020/04/01/Testing-out-Javascript-inside-a-notebook.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/learn-deeplearning-blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://nissan.github.io/learn-deeplearning-blog/feed.xml" title="Redditech's Learn Deep Learning Blog" /><link rel="shortcut icon" type="image/x-icon" href="/learn-deeplearning-blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<link rel="stylesheet" href="/learn-deeplearning-blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://nissan.github.io/learn-deeplearning-blog/feed.xml" title="Redditech's Learn Deep Learning Blog" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-47683314-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+<link rel="shortcut icon" type="image/x-icon" href="/learn-deeplearning-blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Testing out Javascript inside a notebook | Redditech’s Learn Deep Learning Blog</title>
 <meta name="generator" content="Jekyll v4.0.0" />
 <meta property="og:title" content="Testing out Javascript inside a notebook" />
@@ -36,7 +42,13 @@
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
-<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://nissan.github.io/learn-deeplearning-blog/feed.xml" title="Redditech's Learn Deep Learning Blog" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://nissan.github.io/learn-deeplearning-blog/feed.xml" title="Redditech's Learn Deep Learning Blog" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-47683314-2','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
 
 <script>
 function wrap_img(fn) {
@@ -681,10 +693,10 @@ npm.install('froala-editor')
 
 
 
-<div id="b8e2b726-dc69-40a5-90f6-fc2cc51e93b6"></div>
+<div id="286f32f7-4f61-438a-a827-3ba8744a726e"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#b8e2b726-dc69-40a5-90f6-fc2cc51e93b6');
+var element = $('#286f32f7-4f61-438a-a827-3ba8744a726e');
 
 // Load our libraries from a CDN instead of wherever this notebook is hosted.
 require.config({
@@ -769,10 +781,10 @@ window.python = code => new Promise((resolve, reject) => {
 
 
 
-<div id="cd3275fd-e58c-42e4-8d46-27986c9cfaea"></div>
+<div id="4ea8a9f1-ffc5-4a28-aff4-198f55878136"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#cd3275fd-e58c-42e4-8d46-27986c9cfaea');
+var element = $('#4ea8a9f1-ffc5-4a28-aff4-198f55878136');
 
         require(['babel', 'react', 'react-dom'], (Babel, React, ReactDOM) => {
             eval(Babel.transform("python('print(greeting)').then(greeting => {\n    ReactDOM.render(\n      <h1>{greeting}</h1>,\n      element[0],\n    )\n})\n", {presets: ['react']}).code)
